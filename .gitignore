@@ -8,6 +8,8 @@
 /build/
 /cars/build
 /offers/build
+/cars/bin
+/offers/bin
 
 .gradle/8.5/executionHistory/
 
