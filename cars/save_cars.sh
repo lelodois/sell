@@ -1,0 +1,17 @@
+curl --location --request POST 'http://localhost:8085/cars' \
+     --header 'Content-Type: application/json' \
+     --data '{"type": "Honda", "model": "Civic"}' \
+     --next \
+     --location --request POST 'http://localhost:8085/cars' \
+     --header 'Content-Type: application/json' \
+     --data '{"type": "Toyota", "model": "Corolla"}' \
+     --next \
+     --location --request POST 'http://localhost:8085/cars' \
+     --header 'Content-Type: application/json' \
+     --data '{"type": "Fiat", "model": "Uno"}' \
+     --next \
+     --location --request POST 'http://localhost:8085/cars' \
+     --header 'Content-Type: application/json' \
+     --data '{"type": "Chevrolet", "model": "Onix"}' \
+     --next \
+     --location --request GET 'http://localhost:8085/cars'

@@ -1,0 +1,13 @@
+curl --location --request POST 'http://localhost:8086/offers' \
+     --header 'Content-Type: application/json' \
+     --data '{"nickName": "leozito", "price": 50000.00, "carId":1}' \
+     --next \
+     --location --request POST 'http://localhost:8086/offers' \
+     --header 'Content-Type: application/json' \
+     --data '{"nickName": "china", "price": 49000.00, "carId":1}' \
+     --next \
+     --location --request POST 'http://localhost:8086/offers' \
+     --header 'Content-Type: application/json' \
+     --data '{"nickName": "leozito", "price": 29000.00, "carId":2}' \
+     --next \
+     --location --request GET 'http://localhost:8086/offers'

@@ -1,0 +1,14 @@
+version: '3'
+services:
+  cars:
+    build: ./cars
+    ports:
+      - "8085:8085"
+    volumes:
+      - /data/cars
+  offers:
+    build: ./offers
+    ports:
+      - "8086:8086"
+    volumes:
+      - /data/offers

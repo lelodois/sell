@@ -1,0 +1,35 @@
+version: '3'
+services:
+  cars:
+    build: ./cars
+    ports:
+      - "8085:8085"
+    volumes:
+      - /data/cars
+  offers:
+    build: ./offers
+    ports:
+      - "8086:8086"
+    volumes:
+      - /data/offers
+  prometheus:
+    image: prom/prometheus
+    container_name: prometheus
+    command:
+      - '--config.file=/etc/prometheus/prometheus.yml'
+    ports:
+      - "9090:9090"
+    restart: unless-stopped
+    volumes:
+      - ./prometheus:/etc/prometheus
+  grafana:
+    image: grafana/grafana
+    container_name: grafana
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+    environment:
+      - GF_SECURITY_ADMIN_USER=admin
+      - GF_SECURITY_ADMIN_PASSWORD=grafana
+    volumes:
+      - ./grafana:/etc/grafana/provisioning/datasources

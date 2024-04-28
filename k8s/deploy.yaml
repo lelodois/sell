@@ -1,0 +1,64 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cars
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: cars
+  template:
+    metadata:
+      labels:
+        app: cars
+    spec:
+      containers:
+        - name: cars
+          image: lelodois/cars:1
+          ports:
+            - containerPort: 8080
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: offers
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: offers
+  template:
+    metadata:
+      labels:
+        app: offers
+    spec:
+      containers:
+        - name: offers
+          image: lelodois/offers:1
+          ports:
+            - containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cars
+spec:
+  selector:
+    app: cars
+  ports:
+    - port: 80
+      targetPort: 8080
+  type: NodePort
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: offers
+spec:
+  selector:
+    app: offers
+  ports:
+    - port: 80
+      targetPort: 8080
+      nodePort: 30000
+  type: NodePort
