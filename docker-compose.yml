@@ -1,14 +1,27 @@
 version: '3'
 services:
   cars:
-    build: ./cars
+    container_name: cars
+    build:
+      context: cars
+      dockerfile: Dockerfile
     ports:
-      - "8085:8085"
+      - "19999:9999"
     volumes:
       - /data/cars
+    networks:
+      - sell-network
   offers:
-    build: ./offers
+    container_name: offers
+    build:
+      context: offers
+      dockerfile: Dockerfile
     ports:
-      - "8086:8086"
+      - "18888:8888"
     volumes:
       - /data/offers
+    networks:
+      - sell-network
+networks:
+    sell-network:
+        driver: bridge

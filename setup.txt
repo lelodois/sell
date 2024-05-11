@@ -1,0 +1,2 @@
+./gradlew build && docker build offers/. --tag lelodois/sell-offers:9.0 && docker push lelodois/sell-offers:9.0
+./gradlew build && docker build cars/. --tag lelodois/sell-cars:9.0 && docker push lelodois/sell-cars:9.0
