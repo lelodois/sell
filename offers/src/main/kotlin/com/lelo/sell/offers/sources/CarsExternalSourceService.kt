@@ -8,12 +8,12 @@ import org.springframework.stereotype.Service
 class CarsExternalSourceService(val properties: CarsExternalSourceProperties) {
 
     fun find(carId: Int): Car =
-        Request
-            .Get("${properties.baseUrl}/cards/${carId}")
-            .execute()
-            .returnContent()
-            .asString()
-            .let { Gson().fromJson(it, Car::class.java) }
+            Request
+                .Get("${properties.baseUrl}/cars/${carId}")
+                .execute()
+                .returnContent()
+                .asString()
+                .let { Gson().fromJson(it, Car::class.java) }
 }
 
 class Car(val id: Int, val type: String, val model: String) {

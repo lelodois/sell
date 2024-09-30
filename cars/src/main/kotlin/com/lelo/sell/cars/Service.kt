@@ -34,8 +34,8 @@ class Service(val publisher: ApplicationEventPublisher) {
             }.sortedBy { it.id }
 
     fun get(id: Int) =
-        cars.first { it.id == id }
-            .also {
+        cars.firstOrNull { it.id == id }
+            ?.also {
                 publisher.publishEvent(Car.AccessEvent(it))
-            }
+            } ?: run { throw NotFoundException(id) }
 }

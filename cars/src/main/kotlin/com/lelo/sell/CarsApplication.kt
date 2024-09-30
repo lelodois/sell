@@ -4,8 +4,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication(scanBasePackages = ["com.lelo.sell"])
-class Application
+class CarsApplication
 
 fun main(args: Array<String>) {
-    runApplication<Application>(*args)
+    runApplication<CarsApplication>(*args)
 }
